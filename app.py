@@ -3,11 +3,17 @@ import pandas as pd
 import io
 import sys
 import traceback
+import os
 from pathlib import Path
 from datetime import datetime
 
 try:
-    sys.path.insert(0, str(Path(__file__).parent))
+    _root = Path(os.path.dirname(os.path.abspath(__file__)))
+    if str(_root) not in sys.path:
+        sys.path.insert(0, str(_root))
+    if str(_root.parent) not in sys.path:
+        sys.path.insert(0, str(_root.parent))
+    
     from src.data_loader import DataLoader
     from src.analyzer import TicketAnalyzer
     from src.anomaly_detector import AnomalyDetector

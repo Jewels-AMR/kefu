@@ -2,9 +2,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 from typing import Dict, Any, Optional, Tuple, List
 from pathlib import Path
 
