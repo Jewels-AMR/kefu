@@ -1,7 +1,15 @@
 import pandas as pd
 import numpy as np
 from typing import List, Dict, Any, Optional
-from config import ANOMALY_STD_THRESHOLD, ANOMALY_RING_THRESHOLD, CLUSTER_WINDOW_HOURS, CLUSTER_MIN_COUNT, SLA_HOURS
+
+try:
+    from config import ANOMALY_STD_THRESHOLD, ANOMALY_RING_THRESHOLD, CLUSTER_WINDOW_HOURS, CLUSTER_MIN_COUNT, SLA_HOURS
+except ImportError:
+    ANOMALY_STD_THRESHOLD = 2
+    ANOMALY_RING_THRESHOLD = 0.5
+    CLUSTER_WINDOW_HOURS = 24
+    CLUSTER_MIN_COUNT = 3
+    SLA_HOURS = 24
 
 
 class AnomalyDetector:

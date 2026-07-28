@@ -2,16 +2,21 @@ import streamlit as st
 import pandas as pd
 import io
 import sys
+import traceback
 from pathlib import Path
 from datetime import datetime
 
-sys.path.insert(0, str(Path(__file__).parent))
-
-from src.data_loader import DataLoader
-from src.analyzer import TicketAnalyzer
-from src.anomaly_detector import AnomalyDetector
-from src.visualizer import Visualizer
-from src.ai_insights import AIInsightsGenerator
+try:
+    sys.path.insert(0, str(Path(__file__).parent))
+    from src.data_loader import DataLoader
+    from src.analyzer import TicketAnalyzer
+    from src.anomaly_detector import AnomalyDetector
+    from src.visualizer import Visualizer
+    from src.ai_insights import AIInsightsGenerator
+except Exception as e:
+    st.error(f"导入错误: {e}")
+    st.code(traceback.format_exc())
+    st.stop()
 
 st.set_page_config(
     page_title="客服工单智能分析工具",

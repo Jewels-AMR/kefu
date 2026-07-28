@@ -1,6 +1,12 @@
 import json
 from typing import Dict, Any, Optional
-from config import API_KEY, API_BASE, MODEL_NAME
+
+try:
+    from config import API_KEY, API_BASE, MODEL_NAME
+except ImportError:
+    API_KEY = ""
+    API_BASE = "https://api.deepseek.com/v1"
+    MODEL_NAME = "deepseek-chat"
 
 
 class AIInsightsGenerator:

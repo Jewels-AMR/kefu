@@ -115,7 +115,10 @@ class TicketAnalyzer:
                     by_type = by_type.round(2).reset_index()
                     result['resolution_by_type'] = by_type
 
-                from config import SLA_HOURS
+                try:
+                    from config import SLA_HOURS
+                except ImportError:
+                    SLA_HOURS = 24
                 overdue = valid_resolution[valid_resolution['resolution_hours'] > SLA_HOURS]
                 result['sla_compliance'] = {
                     'sla_hours': SLA_HOURS,
